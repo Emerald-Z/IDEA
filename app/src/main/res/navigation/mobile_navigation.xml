@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <activity
+        android:id="@+id/contactFormActivity"
+        android:name="com.example.idea.ui.contact_us.ContactFormActivity"
+        android:label="activity_contact_form"
+        tools:layout="@layout/activity_contact_form" />
+    <activity
+        android:id="@+id/hoursActivity"
+        android:name="com.example.idea.ui.hours.HoursActivity"
+        android:label="activity_hours"
+        tools:layout="@layout/activity_hours" />
+    <activity
+        android:id="@+id/calendarActivity"
+        android:name="com.example.idea.ui.calendar.CalendarActivity"
+        android:label="activity_calendar"
+        tools:layout="@layout/activity_calendar" />
+    <activity
+        android:id="@+id/schoolInformationActivity"
+        android:name="com.example.idea.SchoolInformationActivity"
+        android:label="activity_school_information"
+        tools:layout="@layout/activity_school_information" />
+</navigation>

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">IDEA</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login_page_title">Welcome to I.D.E.A!</string>
+
+    <string name="title_activity_home_page">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_school_info">School Information</string>
+    <string name="title_calendar">Calendar</string>
+    <string name="title_hours">Hours</string>
+
+    <string name="school_info_title">This is school information fragment</string>
+
+    <!-- Strings related to contact form -->
+    <string name="button_title_contact_us">Contact Us</string>
+    <string name="title_get_in_touch">Get In Touch With Us!</string>
+    <string name="contact_form_name">Name</string>
+    <string name="contact_form_email">Email</string>
+    <string name="contact_form_subject">Subject</string>
+    <string name="contact_form_message">Message</string>
+    <string name="contact_form_button">SEND</string>
+
+    <!-- Strings related to loggin in hours -->
+    <string name="text_service_category">Service Category</string>
+    <string name="text_number_of_hours"># of hours</string>
+    <string name="text_teaching">Teaching</string>
+    <string name="text_events_including_donations_and_drives">Events (including donations and drives)</string>
+    <string name="text_total">Total</string>
+    <string name="zero_number">0</string>
+    <string name="select_the_category_you_want_to_log_hours_for">Select the category you want to log hours for</string>
+    <string name="login_hours_button">Login Hours</string>
+    <string name="notifications">Notifications</string>
+
+</resources>
