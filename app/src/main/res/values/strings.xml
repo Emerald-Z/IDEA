@@ -3,7 +3,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in">Log in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
@@ -37,5 +37,8 @@
     <string name="select_the_category_you_want_to_log_hours_for">Select the category you want to log hours for</string>
     <string name="login_hours_button">Login Hours</string>
     <string name="notifications">Notifications</string>
+    <string name="register">Register</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create Account</string>
 
 </resources>
