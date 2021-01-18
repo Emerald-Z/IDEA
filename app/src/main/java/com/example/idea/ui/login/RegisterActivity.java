@@ -17,6 +17,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         private EditText emailText;
         private Button addBtn;
         private EditText passwdText;
+        private EditText fullNameText;
 
         private DBManager dbManager;
 
@@ -29,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         emailText = (EditText) findViewById(R.id.register_email);
         passwdText = (EditText) findViewById(R.id.register_password);
+        fullNameText = (EditText) findViewById(R.id.register_full_name);
 
         addBtn = (Button) findViewById(R.id.create_account);
 
@@ -45,7 +47,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.create_account:
                 final String email = emailText.getText().toString();
                 final String passwd = passwdText.getText().toString();
-                dbManager.insert(email, passwd);
+                final String full_name = fullNameText.getText().toString();
+                dbManager.insert(full_name, email, passwd);
                 Toast.makeText(getBaseContext(), "Your account has been created. Welcome" , Toast.LENGTH_SHORT ).show();
 
 

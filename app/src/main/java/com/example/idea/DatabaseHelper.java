@@ -10,6 +10,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "USERS";
     //Table Columns
     public static final String _ID = "_id";
+    public static final String FULL_NAME = "full_name";
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     //Database Information
@@ -18,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Creating table query
     private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EMAIL + " TEXT NOT NULL, " + PASSWORD + " TEXT);";
+            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FULL_NAME + " TEXT, " + EMAIL + " TEXT NOT NULL, " + PASSWORD + " TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

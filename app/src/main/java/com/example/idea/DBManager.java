@@ -26,8 +26,9 @@ public class DBManager {
         dbHelper.close();
     }
 
-    public void insert(String email, String password){
+    public void insert(String full_name, String email, String password){
         ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.FULL_NAME, full_name);
         contentValue.put(DatabaseHelper.EMAIL, email);
         contentValue.put(DatabaseHelper.PASSWORD, password);
         database.insert(DatabaseHelper.TABLE_NAME, null, contentValue);
@@ -44,8 +45,9 @@ public class DBManager {
     }
 
     */
-    public int update(long _id, String email, String password){
+    public int update(long _id, String full_name, String email, String password){
         ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.FULL_NAME, full_name);
         contentValues.put(DatabaseHelper.EMAIL, email);
         contentValues.put(DatabaseHelper.PASSWORD, password);
         int i = database.update(DatabaseHelper.TABLE_NAME, contentValues, DatabaseHelper._ID + " = " + _id, null);
