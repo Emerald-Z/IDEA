@@ -30,13 +30,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         //Register button
-        Button register = (Button)findViewById(R.id.Register);
+        Button register = (Button) findViewById(R.id.Register);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +46,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
+        
+        Button login = (Button) findViewById(R.id.login);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(true){
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                }
+                else{
+                    Toast.makeText(getBaseContext(), "Login Failed" , Toast.LENGTH_SHORT ).show();
+                }
+            }
+        });
+    }
+}
+
+  /*      loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
         final EditText usernameEditText = findViewById(R.id.username);
@@ -145,3 +163,5 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 }
+
+   */
