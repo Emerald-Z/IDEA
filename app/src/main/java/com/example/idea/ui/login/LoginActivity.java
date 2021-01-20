@@ -5,7 +5,10 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -23,13 +26,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.idea.DBManager;
+import com.example.idea.DatabaseHelper;
 import com.example.idea.MainActivity;
 import com.example.idea.R;
 
 public class LoginActivity extends AppCompatActivity {
-
+    Context c = this;
     private LoginViewModel loginViewModel;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,13 +50,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        
+
         Button login = (Button) findViewById(R.id.login);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(true){
+                EditText usernameEditText = findViewById(R.id.username);
+                EditText passwordEditText = findViewById(R.id.password);
+
+                if(checkUser(usernameEditText.getText().toString(), passwordEditText.getText().toString())){
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
                 else{
@@ -60,6 +67,40 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public boolean checkUser(String email, String password){
+        DBManager db = new DBManager(c);
+        db.open();
+
+        // array of columns to fetch
+        String[] columns = {
+                DatabaseHelper.EMAIL
+        };
+        // selection criteria
+        String selection = DatabaseHelper.EMAIL + " = ?" + " AND " + DatabaseHelper.PASSWORD + " = ?";
+        // selection arguments
+        String[] selectionArgs = {email, password};
+        // query user table with conditions
+        /**
+         * Here query function is used to fetch records from user table this function works like we use sql query.
+         * SQL query equivalent to this query function is
+         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
+         */
+        Cursor cursor = db.getDatabase().query(DatabaseHelper.TABLE_NAME, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                       //filter by row groups
+                null);                      //The sort order
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        db.close();
+        if (cursorCount > 0) {
+            return true;
+        }
+        return false;
     }
 }
 

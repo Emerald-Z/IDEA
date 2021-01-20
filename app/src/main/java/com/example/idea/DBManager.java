@@ -22,6 +22,9 @@ public class DBManager {
         return this;
     }
 
+    public SQLiteDatabase getDatabase(){
+        return this.database;
+    }
     public void close(){
         dbHelper.close();
     }
@@ -35,7 +38,7 @@ public class DBManager {
     }
 
     //Cursor?
-   /* public Cursor fetch() {
+    public Cursor fetch() {
         String[] columns = new String[] { DatabaseHelper._ID, DatabaseHelper.EMAIL, DatabaseHelper.PASSWORD };
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, null, null, null, null, null);
         if (cursor != null) {
@@ -44,7 +47,6 @@ public class DBManager {
         return cursor;
     }
 
-    */
     public int update(long _id, String full_name, String email, String password){
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.FULL_NAME, full_name);
@@ -57,4 +59,5 @@ public class DBManager {
     public void delete(long _id){
         database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + _id, null);
     }
+
 }
