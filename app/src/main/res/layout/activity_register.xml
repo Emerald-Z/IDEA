@@ -7,20 +7,20 @@
     tools:context=".ui.login.RegisterActivity">
 
     <EditText
-        android:id="@+id/register_full_name"
+        android:id="@+id/update_full_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="344dp"
         android:ems="10"
         android:hint="full name"
-        app:layout_constraintBottom_toTopOf="@+id/create_account"
+        app:layout_constraintBottom_toTopOf="@+id/logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></EditText>
 
     <EditText
-        android:id="@+id/register_email"
+        android:id="@+id/update_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -28,22 +28,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_full_name"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/update_full_name"></EditText>
 
     <EditText
-        android:id="@+id/register_password"
+        android:id="@+id/update_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/password"
-        app:layout_constraintBottom_toTopOf="@+id/create_account"
+        app:layout_constraintBottom_toTopOf="@+id/logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_email"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/update_email"></EditText>
 
     <Button
-        android:id="@+id/create_account"
+        android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="240dp"

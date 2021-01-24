@@ -1,16 +1,22 @@
 package com.example.idea;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 
 import com.example.idea.ui.calendar.CalendarActivity;
 import com.example.idea.ui.contact_us.ContactFormActivity;
 import com.example.idea.ui.hours.HoursActivity;
+import com.example.idea.ui.login.LoginActivity;
+import com.example.idea.ui.login.RegisterActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -18,10 +24,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences sharedpreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Button
+        Button button = (Button) findViewById(R.id.HelloButton);
+        sharedpreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        button.setText("Hello " + sharedpreferences.getString("fullnameKey", null) + sharedpreferences.getString("idKey", null));
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, EditAccountLogoutActivity.class));
+            }
+        });
+
 //Configure Webview
         WebView myWebView = findViewById(R.id.ideaportal_view);
         //enable javascript
@@ -29,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         myWebView.setWebViewClient(new MyWebViewClient());
         myWebView.loadUrl("http://www.ideaportal.org/");
+
 //BottomNavigation
         BottomNavigationView navView = findViewById(R.id.nav_view);
        // BottomNavigationViewHelper.disableShiftMode(navView);

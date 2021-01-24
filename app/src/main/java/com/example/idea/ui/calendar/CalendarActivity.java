@@ -12,6 +12,7 @@ import com.example.idea.ui.contact_us.ContactFormActivity;
 import com.example.idea.MainActivity;
 import com.example.idea.R;
 import com.example.idea.SchoolInformationActivity;
+import com.example.idea.ui.hours.HoursActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CalendarActivity extends AppCompatActivity {
@@ -38,7 +39,8 @@ public class CalendarActivity extends AppCompatActivity {
                         break;
 
                     case R.id.navigation_hours:
-
+                        Intent intent1 = new Intent(CalendarActivity.this, HoursActivity.class);
+                        startActivity(intent1);
                         break;
 
                     case R.id.navigation_contact_us:
@@ -52,8 +54,7 @@ public class CalendarActivity extends AppCompatActivity {
                         break;
 
                     case R.id.navigation_calendar:
-                        Intent intent4 = new Intent(CalendarActivity.this, CalendarActivity.class);
-                        startActivity(intent4);
+
                         break;
                 }
 

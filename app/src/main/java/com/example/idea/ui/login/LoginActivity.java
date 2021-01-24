@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -33,12 +34,21 @@ import com.example.idea.R;
 
 public class LoginActivity extends AppCompatActivity {
     Context c = this;
+
+    public static final String MyPREFERENCES = "MyPrefs";
+    public static final String ID = "idKey";
+    public static final String FullName = "fullnameKey";
+    public static final String Email = "emailKey";
+
+    SharedPreferences sharedpreferences;
+
     private LoginViewModel loginViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         //Register button
         Button register = (Button) findViewById(R.id.Register);
@@ -52,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         Button login = (Button) findViewById(R.id.login);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +71,9 @@ public class LoginActivity extends AppCompatActivity {
                 EditText passwordEditText = findViewById(R.id.password);
 
                 if(checkUser(usernameEditText.getText().toString(), passwordEditText.getText().toString())){
+
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
                 }
                 else{
                     Toast.makeText(getBaseContext(), "Login Failed" , Toast.LENGTH_SHORT ).show();
@@ -75,6 +88,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // array of columns to fetch
         String[] columns = {
+                DatabaseHelper._ID,
+                DatabaseHelper.FULL_NAME,
                 DatabaseHelper.EMAIL
         };
         // selection criteria
@@ -94,10 +109,16 @@ public class LoginActivity extends AppCompatActivity {
                 null,                       //group the rows
                 null,                       //filter by row groups
                 null);                      //The sort order
-        int cursorCount = cursor.getCount();
-        cursor.close();
-        db.close();
-        if (cursorCount > 0) {
+
+        if (cursor.moveToFirst()) {
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString(ID, cursor.getString(cursor.getColumnIndex(DatabaseHelper._ID)));
+            editor.putString(FullName, cursor.getString(cursor.getColumnIndex(DatabaseHelper.FULL_NAME)));
+            editor.putString(Email, email);
+            editor.commit();
+
+            cursor.close();
+            db.close();
             return true;
         }
         return false;
