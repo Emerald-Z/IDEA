@@ -5,10 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.ContactsContract;
 
 public class DBManager {
-    private DatabaseHelper dbHelper;
+    private User dbHelper;
     private Context context;
     private SQLiteDatabase database;
 
@@ -17,7 +16,7 @@ public class DBManager {
     }
 
     public DBManager open() throws SQLException{
-        dbHelper = new DatabaseHelper(context);
+        dbHelper = new User(context);
         database = dbHelper.getWritableDatabase();
         return this;
     }
@@ -31,16 +30,16 @@ public class DBManager {
 
     public void insert(String full_name, String email, String password){
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DatabaseHelper.FULL_NAME, full_name);
-        contentValue.put(DatabaseHelper.EMAIL, email);
-        contentValue.put(DatabaseHelper.PASSWORD, password);
-        database.insert(DatabaseHelper.TABLE_NAME, null, contentValue);
+        contentValue.put(User.FULL_NAME, full_name);
+        contentValue.put(User.EMAIL, email);
+        contentValue.put(User.PASSWORD, password);
+        database.insert(User.TABLE_NAME, null, contentValue);
     }
 
     //Cursor?
     public Cursor fetch() {
-        String[] columns = new String[] { DatabaseHelper._ID, DatabaseHelper.EMAIL, DatabaseHelper.PASSWORD };
-        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, null, null, null, null, null);
+        String[] columns = new String[] { User._ID, User.EMAIL, User.PASSWORD };
+        Cursor cursor = database.query(User.TABLE_NAME, columns, null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
@@ -49,15 +48,15 @@ public class DBManager {
 
     public int update(long _id, String full_name, String email, String password){
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DatabaseHelper.FULL_NAME, full_name);
-        contentValues.put(DatabaseHelper.EMAIL, email);
-        contentValues.put(DatabaseHelper.PASSWORD, password);
-        int i = database.update(DatabaseHelper.TABLE_NAME, contentValues, DatabaseHelper._ID + " = " + _id, null);
+        contentValues.put(User.FULL_NAME, full_name);
+        contentValues.put(User.EMAIL, email);
+        contentValues.put(User.PASSWORD, password);
+        int i = database.update(User.TABLE_NAME, contentValues, User._ID + " = " + _id, null);
         return i;
     }
 
     public void delete(long _id){
-        database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + _id, null);
+        database.delete(User.TABLE_NAME, User._ID + "=" + _id, null);
     }
 
 }

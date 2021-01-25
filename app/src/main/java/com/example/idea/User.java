@@ -1,37 +1,38 @@
 package com.example.idea;
 
-public class User {
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
-    private int id;
-    private String full_name;
-    private String email;
-    private String password;
+public class User extends SQLiteOpenHelper {
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getName() {
-        return full_name;
-    }
-    public void setName(String full_name) {
-        this.full_name = full_name;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
+    //Table Name
+    public static final String TABLE_NAME = "USERS";
+    //Table Columns
+    public static final String _ID = "_id";
+    public static final String FULL_NAME = "full_name";
+    public static final String EMAIL = "email";
+    public static final String PASSWORD = "password";
+    //Database Information
+    static final String DB_NAME = "IDEA_USERS.DB";
+    static final int DB_VERSION = 1;
+
+    //Creating table query
+    private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
+            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FULL_NAME + " TEXT, " + EMAIL + " TEXT NOT NULL, " + PASSWORD + " TEXT);";
+
+    public User(Context context) {
+        super(context, DB_NAME, null, DB_VERSION);
     }
 
+    @Override
+    public void onCreate(SQLiteDatabase db){
+        db.execSQL(CREATE_TABLE);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
 }
-
-

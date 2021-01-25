@@ -1,34 +1,20 @@
 package com.example.idea.ui.login;
 
-import android.app.Activity;
-
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.idea.DBManager;
-import com.example.idea.DatabaseHelper;
+import com.example.idea.User;
 import com.example.idea.MainActivity;
 import com.example.idea.R;
 
@@ -88,12 +74,12 @@ public class LoginActivity extends AppCompatActivity {
 
         // array of columns to fetch
         String[] columns = {
-                DatabaseHelper._ID,
-                DatabaseHelper.FULL_NAME,
-                DatabaseHelper.EMAIL
+                User._ID,
+                User.FULL_NAME,
+                User.EMAIL
         };
         // selection criteria
-        String selection = DatabaseHelper.EMAIL + " = ?" + " AND " + DatabaseHelper.PASSWORD + " = ?";
+        String selection = User.EMAIL + " = ?" + " AND " + User.PASSWORD + " = ?";
         // selection arguments
         String[] selectionArgs = {email, password};
         // query user table with conditions
@@ -102,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
          * SQL query equivalent to this query function is
          * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
          */
-        Cursor cursor = db.getDatabase().query(DatabaseHelper.TABLE_NAME, //Table to query
+        Cursor cursor = db.getDatabase().query(User.TABLE_NAME, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause
                 selectionArgs,              //The values for the WHERE clause
@@ -112,8 +98,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if (cursor.moveToFirst()) {
             SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.putString(ID, cursor.getString(cursor.getColumnIndex(DatabaseHelper._ID)));
-            editor.putString(FullName, cursor.getString(cursor.getColumnIndex(DatabaseHelper.FULL_NAME)));
+            editor.putString(ID, cursor.getString(cursor.getColumnIndex(User._ID)));
+            editor.putString(FullName, cursor.getString(cursor.getColumnIndex(User.FULL_NAME)));
             editor.putString(Email, email);
             editor.commit();
 
