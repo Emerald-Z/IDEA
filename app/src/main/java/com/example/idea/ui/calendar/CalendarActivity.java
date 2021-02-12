@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,11 +12,13 @@ import android.view.MenuItem;
 import com.example.idea.ui.contact_us.ContactFormActivity;
 import com.example.idea.MainActivity;
 import com.example.idea.R;
-import com.example.idea.SchoolInformationActivity;
+import com.example.idea.ui.school_information.SchoolInformationActivity;
 import com.example.idea.ui.hours.HoursActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CalendarActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

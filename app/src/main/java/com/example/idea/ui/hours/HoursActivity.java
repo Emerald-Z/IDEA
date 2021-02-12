@@ -14,7 +14,7 @@ import android.widget.Button;
 import com.example.idea.ui.contact_us.ContactFormActivity;
 import com.example.idea.MainActivity;
 import com.example.idea.R;
-import com.example.idea.SchoolInformationActivity;
+import com.example.idea.ui.school_information.SchoolInformationActivity;
 import com.example.idea.ui.calendar.CalendarActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;

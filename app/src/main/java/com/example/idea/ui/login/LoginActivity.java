@@ -4,27 +4,40 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.idea.DBManager;
 import com.example.idea.User;
+import com.example.idea.MyDB;
 import com.example.idea.MainActivity;
 import com.example.idea.R;
 
 public class LoginActivity extends AppCompatActivity {
     Context c = this;
 
+    //User keys for session
     public static final String MyPREFERENCES = "MyPrefs";
     public static final String ID = "idKey";
     public static final String FullName = "fullnameKey";
     public static final String Email = "emailKey";
+    public static final String SchoolInfoID = "schoolInfoIdKey";
+
+    //SchoolInfo Key
+    public static final String _ID = "id2Key";
+    public static final String SCHOOL_NAME = "schoolNameKey";
+    public static final String DAYOFTHEWEEK = "dayOfWeekKey";
+    public static final String MYTIME = "myTimeKey";
+    public static final String THEIRTIME = "theirTimeKey";
+    public static final String CLASSLEVEL = "classLevelKey";
+    public static final String CLASSTYPE = "classTypeKey";
 
     SharedPreferences sharedpreferences;
 
@@ -69,17 +82,18 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean checkUser(String email, String password){
-        DBManager db = new DBManager(c);
-        db.open();
+        MyDB db = new MyDB(c);
+        SQLiteDatabase database = db.getWritableDatabase();
 
         // array of columns to fetch
         String[] columns = {
-                User._ID,
-                User.FULL_NAME,
-                User.EMAIL
+                MyDB._ID,
+                MyDB.FULL_NAME,
+                MyDB.EMAIL,
+                MyDB.SCHOOL_INFO_ID
         };
         // selection criteria
-        String selection = User.EMAIL + " = ?" + " AND " + User.PASSWORD + " = ?";
+        String selection = MyDB.EMAIL + " = ?" + " AND " + MyDB.PASSWORD + " = ?";
         // selection arguments
         String[] selectionArgs = {email, password};
         // query user table with conditions
@@ -88,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
          * SQL query equivalent to this query function is
          * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
          */
-        Cursor cursor = db.getDatabase().query(User.TABLE_NAME, //Table to query
+        Cursor cursor = database.query(MyDB.TABLE_NAME, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause
                 selectionArgs,              //The values for the WHERE clause
@@ -96,11 +110,52 @@ public class LoginActivity extends AppCompatActivity {
                 null,                       //filter by row groups
                 null);                      //The sort order
 
+
         if (cursor.moveToFirst()) {
             SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.putString(ID, cursor.getString(cursor.getColumnIndex(User._ID)));
-            editor.putString(FullName, cursor.getString(cursor.getColumnIndex(User.FULL_NAME)));
+            editor.putString(ID, cursor.getString(cursor.getColumnIndex(MyDB._ID)));
+            editor.putString(FullName, cursor.getString(cursor.getColumnIndex(MyDB.FULL_NAME)));
             editor.putString(Email, email);
+            editor.putString(SchoolInfoID, cursor.getString(cursor.getColumnIndex(MyDB.SCHOOL_INFO_ID)));
+
+
+            String[] columns2 = {
+                    MyDB._ID_SCHOOL,
+                    MyDB.SCHOOL_NAME,
+                    MyDB.DAYOFTHEWEEK,
+                    MyDB.MYTIME,
+                    MyDB.THEIRTIME,
+                    MyDB.CLASSLEVEL,
+                    MyDB.CLASSTYPE
+            };
+
+            String selection2 = MyDB._ID_SCHOOL + " =?";
+            String[] selectionArgs2 = {cursor.getString(cursor.getColumnIndex(MyDB.SCHOOL_INFO_ID))};
+            Cursor cursor2 = database.query(MyDB.TABLE_NAME_SCHOOL,
+                    columns2,
+                    selection2,
+                    selectionArgs2,
+                    null,
+                    null,
+                    null
+            );
+
+
+
+
+            if(cursor2.moveToFirst()) {
+                Log.d("sdfsdfsd", "sdfsf");
+                editor.putString(_ID, cursor2.getString(cursor2.getColumnIndex(MyDB._ID_SCHOOL)));
+                editor.putString(SCHOOL_NAME, cursor2.getString(cursor2.getColumnIndex(MyDB.SCHOOL_NAME)));
+                editor.putString(DAYOFTHEWEEK, cursor2.getString(cursor2.getColumnIndex(MyDB.DAYOFTHEWEEK)));
+                editor.putString(MYTIME, cursor2.getString(cursor2.getColumnIndex(MyDB.MYTIME)));
+                editor.putString(THEIRTIME, cursor2.getString(cursor2.getColumnIndex(MyDB.THEIRTIME)));
+                editor.putString(CLASSLEVEL, cursor2.getString(cursor2.getColumnIndex(MyDB.CLASSLEVEL)));
+                editor.putString(CLASSTYPE, cursor2.getString(cursor2.getColumnIndex(MyDB.CLASSTYPE)));
+            }
+
+
+
             editor.commit();
 
             cursor.close();

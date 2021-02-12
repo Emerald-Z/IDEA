@@ -2,13 +2,16 @@ package com.example.idea.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.idea.DBManager;
+import com.example.idea.MyDB;
+import com.example.idea.User;
 import com.example.idea.R;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -18,7 +21,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         private EditText passwdText;
         private EditText fullNameText;
 
-        private DBManager dbManager;
+        private User user;
+        Context c = this;
 
 
     @Override
@@ -33,8 +37,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         addBtn = (Button) findViewById(R.id.logout);
 
-        dbManager = new DBManager(this);
-        dbManager.open();
+
+        user = new User(this);
+
         addBtn.setOnClickListener(this);
 
 
@@ -47,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 final String email = emailText.getText().toString();
                 final String passwd = passwdText.getText().toString();
                 final String full_name = fullNameText.getText().toString();
-                dbManager.insert(full_name, email, passwd);
+                user.insert(full_name, email, passwd);
                 Toast.makeText(getBaseContext(), "Your account has been created. Welcome" , Toast.LENGTH_SHORT ).show();
 
 

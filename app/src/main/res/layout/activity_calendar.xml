@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calendar_my_time"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.calendar.CalendarActivity">
@@ -39,8 +40,20 @@
         android:stretchColumns="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/calendar_school_name"
+                android:layout_column="1"
+                android:padding="3dip"
+                android:text="School" />
+
+        </TableRow>
 
         <TableRow>
 
@@ -50,6 +63,7 @@
                 android:text="Day of the Week" />
 
             <TextView
+                android:id="@+id/calendar_day"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="____day" />
@@ -88,6 +102,7 @@
                 android:text="Their Time" />
 
             <TextView
+                android:id="@+id/calendar_their_time"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="00:00 Beijing Standard Time" />
@@ -105,10 +120,23 @@
                 android:text="Class Level" />
 
             <TextView
-                android:id="@+id/num_of_hours_total"
+                android:id="@+id/calendar_grade_level"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="Grade" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:padding="3dip"
+                android:text="Class Type" />
+
+            <TextView
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="Type" />
         </TableRow>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

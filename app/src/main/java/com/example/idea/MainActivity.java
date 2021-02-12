@@ -1,6 +1,5 @@
 package com.example.idea;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,8 +14,7 @@ import android.widget.Button;
 import com.example.idea.ui.calendar.CalendarActivity;
 import com.example.idea.ui.contact_us.ContactFormActivity;
 import com.example.idea.ui.hours.HoursActivity;
-import com.example.idea.ui.login.LoginActivity;
-import com.example.idea.ui.login.RegisterActivity;
+import com.example.idea.ui.school_information.SchoolInformationActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -34,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         // Button
         Button button = (Button) findViewById(R.id.HelloButton);
         sharedpreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        button.setText("Hello " + sharedpreferences.getString("fullnameKey", null) + sharedpreferences.getString("idKey", null));
+        button.setText("Hello " + sharedpreferences.getString("fullnameKey", null) + sharedpreferences.getString("idKey", null) +
+                sharedpreferences.getString("schoolNameKey", null));
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

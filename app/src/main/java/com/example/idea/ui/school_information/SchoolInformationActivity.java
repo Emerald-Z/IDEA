@@ -1,4 +1,4 @@
-package com.example.idea;
+package com.example.idea.ui.school_information;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.idea.MainActivity;
+import com.example.idea.R;
 import com.example.idea.ui.calendar.CalendarActivity;
 import com.example.idea.ui.contact_us.ContactFormActivity;
 import com.example.idea.ui.hours.HoursActivity;
@@ -19,6 +21,16 @@ public class SchoolInformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_information);
+
+
+
+
+
+
+
+
+
+
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // BottomNavigationViewHelper.disableShiftMode(navView);

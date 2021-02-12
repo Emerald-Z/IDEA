@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 import com.example.idea.MainActivity;
 import com.example.idea.R;
-import com.example.idea.SchoolInformationActivity;
+import com.example.idea.ui.school_information.SchoolInformationActivity;
 import com.example.idea.ui.calendar.CalendarActivity;
 import com.example.idea.ui.hours.HoursActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

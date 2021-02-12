@@ -1,38 +1,60 @@
 package com.example.idea;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
-public class User extends SQLiteOpenHelper {
+public class User {
+    private MyDB dbHelper;
+    private Context context;
+    private SQLiteDatabase database;
 
-    //Table Name
-    public static final String TABLE_NAME = "USERS";
-    //Table Columns
-    public static final String _ID = "_id";
-    public static final String FULL_NAME = "full_name";
-    public static final String EMAIL = "email";
-    public static final String PASSWORD = "password";
-    //Database Information
-    static final String DB_NAME = "IDEA_USERS.DB";
-    static final int DB_VERSION = 1;
-
-    //Creating table query
-    private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + _ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FULL_NAME + " TEXT, " + EMAIL + " TEXT NOT NULL, " + PASSWORD + " TEXT);";
-
-    public User(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+    public User(Context c){
+        context = c;
+        MyDB db = new MyDB(c);
+        database = db.getWritableDatabase();
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db){
-        db.execSQL(CREATE_TABLE);
+
+    public SQLiteDatabase getDatabase(){
+        return this.database;
+    }
+    public void close(){
+        dbHelper.close();
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(db);
+    public void insert(String full_name, String email, String password){
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(MyDB.FULL_NAME, full_name);
+        contentValue.put(MyDB.EMAIL, email);
+        contentValue.put(MyDB.PASSWORD, password);
+        contentValue.put(MyDB.SCHOOL_INFO_ID, 1);
+        database.insert(MyDB.TABLE_NAME, null, contentValue);
     }
+
+    //Cursor?
+    public Cursor fetch() {
+        String[] columns = new String[] { MyDB._ID, MyDB.EMAIL, MyDB.PASSWORD };
+        Cursor cursor = database.query(MyDB.TABLE_NAME, columns, null, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    public int update(long _id, String full_name, String email, String password){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MyDB.FULL_NAME, full_name);
+        contentValues.put(MyDB.EMAIL, email);
+        contentValues.put(MyDB.PASSWORD, password);
+        int i = database.update(MyDB.TABLE_NAME, contentValues, MyDB._ID + " = " + _id, null);
+        return i;
+    }
+
+    public void delete(long _id){
+        database.delete(MyDB.TABLE_NAME, MyDB._ID + "=" + _id, null);
+    }
+
 }

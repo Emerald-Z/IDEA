@@ -22,7 +22,7 @@
         tools:layout="@layout/activity_calendar" />
     <activity
         android:id="@+id/schoolInformationActivity"
-        android:name="com.example.idea.SchoolInformationActivity"
+        android:name="com.example.idea.ui.school_information.SchoolInformationActivity"
         android:label="activity_school_information"
         tools:layout="@layout/activity_school_information" />
 </navigation>
