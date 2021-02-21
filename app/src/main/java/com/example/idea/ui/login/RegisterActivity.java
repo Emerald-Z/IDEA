@@ -2,26 +2,37 @@ package com.example.idea.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.idea.MyDB;
-import com.example.idea.User;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.idea.MainActivity;
 import com.example.idea.R;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.HashMap;
+import java.util.Map;
+
+public class RegisterActivity extends AppCompatActivity{
 
         private EditText emailText;
         private Button addBtn;
         private EditText passwdText;
-        private EditText fullNameText;
+        private EditText firstNameText;
+        private EditText lastNameText;
+        private String IPAddress = "192.168.254.24";
 
-        private User user;
         Context c = this;
 
 
@@ -33,30 +44,51 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         emailText = (EditText) findViewById(R.id.update_email);
         passwdText = (EditText) findViewById(R.id.update_password);
-        fullNameText = (EditText) findViewById(R.id.update_full_name);
+        firstNameText = (EditText) findViewById(R.id.update_first_name);
+        lastNameText = (EditText) findViewById(R.id.update_last_name);
 
-        addBtn = (Button) findViewById(R.id.logout);
+        addBtn = (Button) findViewById(R.id.create_account);
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String URL = "http://" + IPAddress + "/test.php?action=register";
+                StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (s.equals("false")) {
+                            Toast.makeText(RegisterActivity.this, "Can't Register", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getBaseContext(), "Your account has been created. Welcome", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(RegisterActivity.this, "Some error occurred -> " + volleyError, Toast.LENGTH_LONG).show();
+                        ;
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> parameters = new HashMap<String, String>();
+                        parameters.put("email", emailText.getText().toString());
+                        parameters.put("password", passwdText.getText().toString());
+                        parameters.put("first_name", firstNameText.getText().toString());
+                        parameters.put("last_name", lastNameText.getText().toString());
+                        return parameters;
+                    }
+                };
+
+                RequestQueue rQueue = Volley.newRequestQueue(RegisterActivity.this);
+                rQueue.add(request);
+
+            }
 
 
-        user = new User(this);
-
-        addBtn.setOnClickListener(this);
-
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()) {
-            case R.id.logout:
-                final String email = emailText.getText().toString();
-                final String passwd = passwdText.getText().toString();
-                final String full_name = fullNameText.getText().toString();
-                user.insert(full_name, email, passwd);
-                Toast.makeText(getBaseContext(), "Your account has been created. Welcome" , Toast.LENGTH_SHORT ).show();
-
-
-        }
+        });
     }
 
 }

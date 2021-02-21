@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         // Button
         Button button = (Button) findViewById(R.id.HelloButton);
         sharedpreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        button.setText("Hello " + sharedpreferences.getString("fullnameKey", null) + sharedpreferences.getString("idKey", null) +
-                sharedpreferences.getString("schoolNameKey", null));
+        button.setText("Hello " + sharedpreferences.getString("firstnameKey", null) + sharedpreferences.getString("lastnameKey", null) +
+                sharedpreferences.getString("idKey", null));
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

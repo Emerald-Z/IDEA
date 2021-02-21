@@ -7,17 +7,32 @@
     tools:context=".ui.login.RegisterActivity">
 
     <EditText
-        android:id="@+id/update_full_name"
+        android:id="@+id/update_first_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="344dp"
         android:ems="10"
-        android:hint="full name"
-        app:layout_constraintBottom_toTopOf="@+id/logout"
+        android:hint="first name"
+        app:layout_constraintBottom_toTopOf="@+id/create_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></EditText>
+
+
+    <EditText
+        android:id="@+id/update_last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="344dp"
+        android:ems="10"
+        android:hint="last name"
+        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/update_first_name"></EditText>
 
     <EditText
         android:id="@+id/update_email"
@@ -28,7 +43,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_full_name"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/update_last_name"
+        app:layout_constraintBottom_toTopOf="@id/update_password"></EditText>
 
     <EditText
         android:id="@+id/update_password"
@@ -36,14 +52,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/password"
-        app:layout_constraintBottom_toTopOf="@+id/logout"
+        app:layout_constraintBottom_toTopOf="@+id/create_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/update_email"></EditText>
 
     <Button
-        android:id="@+id/logout"
+        android:id="@+id/create_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="240dp"
