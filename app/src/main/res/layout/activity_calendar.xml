@@ -53,6 +53,12 @@
                 android:padding="3dip"
                 android:text="School" />
 
+            <TextView
+                android:id="@+id/school_name"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="____day" />
+
         </TableRow>
 
         <TableRow>
@@ -89,6 +95,7 @@
                 android:text="My Time" />
 
             <TextView
+                android:id="@+id/my_time"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="00:00 CST" />
@@ -117,7 +124,7 @@
             <TextView
                 android:layout_column="1"
                 android:padding="3dip"
-                android:text="Class Level" />
+                android:text="Grade Level" />
 
             <TextView
                 android:id="@+id/calendar_grade_level"
@@ -134,6 +141,7 @@
                 android:text="Class Type" />
 
             <TextView
+                android:id="@+id/calendar_class_type"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="Type" />

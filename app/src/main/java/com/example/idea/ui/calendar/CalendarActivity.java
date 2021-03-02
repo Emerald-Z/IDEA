@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.idea.ui.contact_us.ContactFormActivity;
 import com.example.idea.MainActivity;
@@ -17,6 +19,7 @@ import com.example.idea.ui.hours.HoursActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CalendarActivity extends AppCompatActivity {
+    SharedPreferences sharedpreferences;
 
 
 
@@ -24,6 +27,28 @@ public class CalendarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        //feed info from database
+
+        TextView dayOftheWeek = (TextView) findViewById(R.id.calendar_day);
+        sharedpreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        dayOftheWeek.setText(sharedpreferences.getString("dayOfWeekKey", null));
+
+        TextView mytime = (TextView) findViewById(R.id.my_time);
+        mytime.setText(sharedpreferences.getString("myTimeKey", null));
+
+        TextView theirtime = (TextView) findViewById(R.id.calendar_their_time);
+        theirtime.setText(sharedpreferences.getString("theirTimeKey", null));
+
+        TextView gradelevel = (TextView) findViewById(R.id.calendar_grade_level);
+        gradelevel.setText(sharedpreferences.getString("classLevelKey", null));
+
+        TextView classtype = (TextView) findViewById(R.id.calendar_class_type);
+        classtype.setText(sharedpreferences.getString("classTypeKey", null));
+
+        TextView schoolname = (TextView) findViewById(R.id.school_name);
+        schoolname.setText(sharedpreferences.getString("schoolNameKey", null));
+
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // BottomNavigationViewHelper.disableShiftMode(navView);

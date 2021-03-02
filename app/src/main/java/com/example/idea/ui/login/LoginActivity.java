@@ -53,8 +53,10 @@ public class LoginActivity extends AppCompatActivity {
     public static final String THEIRTIME = "theirTimeKey";
     public static final String CLASSLEVEL = "classLevelKey";
     public static final String CLASSTYPE = "classTypeKey";
+    public static final String SCHOOL_SPONSOR = "sponsorKey";
 
     SharedPreferences sharedpreferences;
+    private String IPAddress = "192.168.254.24";
 
 
     @Override
@@ -82,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText usernameEditText = findViewById(R.id.username);
                 EditText passwordEditText = findViewById(R.id.password);
-                String URL = "http://192.168.254.24/test.php?action=login";
+                String URL = "http://" + IPAddress + "/test.php?action=login";
 
                 StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
@@ -94,11 +96,32 @@ public class LoginActivity extends AppCompatActivity {
                             String id = null;
                             String firstname = null;
                             String lastname = null;
+                            String dayoftheweek = null;
+                            String mytime = null;
+                            String theirtime = null;
+                            String gradelevel = null;
+                            String classtype = null;
+                            String schoolid = null;
+                            String schoolname = null;
+                            String sponsor = null;
                             try {
                                 reader = new JSONObject(s);
-                                id = reader.getString("id");
-                                firstname = reader.getString("first_name");
-                                lastname = reader.getString("last_name");
+                                JSONObject user  = reader.getJSONObject("result");
+                                JSONObject classinfo = reader.getJSONObject("class");
+                                JSONObject schoolinfo  = reader.getJSONObject("schoolinfo");
+
+                                id = user.getString("id");
+                                firstname = user.getString("first_name");
+                                lastname = user.getString("last_name");
+                                dayoftheweek = classinfo.getString("day_of_the_week");
+                                mytime = classinfo.getString("time");
+                                theirtime = classinfo.getString("foreign_time");
+                                gradelevel = classinfo.getString("level");
+                                classtype = classinfo.getString("name");
+                                schoolid = classinfo.getString("school_id");
+                                schoolname = schoolinfo.getString("school_name");
+                                sponsor = schoolinfo.getString("sponsor");
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -108,6 +131,15 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString(FirstName, firstname);
                             editor.putString(LastName, lastname);
                             editor.putString(Email, usernameEditText.getText().toString());
+                            editor.putString(DAYOFTHEWEEK, dayoftheweek);
+                            editor.putString(MYTIME, mytime);
+                            editor.putString(THEIRTIME, theirtime);
+                            editor.putString(CLASSLEVEL, gradelevel);
+                            editor.putString(CLASSTYPE, classtype);
+                            editor.putString(SchoolInfoID, schoolid);
+                            editor.putString(SCHOOL_NAME, schoolname);
+                            editor.putString(SCHOOL_SPONSOR, sponsor);
+
                             editor.commit();
 
                             Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();

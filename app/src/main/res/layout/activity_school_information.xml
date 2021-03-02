@@ -31,6 +31,7 @@
         <TableRow>
 
             <TextView
+                android:id="@+id/school_info_schoolname"
                 android:layout_column="1"
                 android:padding="3dip"
                 android:text="School" />
@@ -59,6 +60,7 @@
         <TableRow>
 
             <TextView
+                android:id="@+id/teacher_1"
                 android:layout_column="1"
                 android:padding="3dip"
                 android:text="Empty" />
@@ -67,6 +69,7 @@
         <TableRow>
 
             <TextView
+                android:id="@+id/teacher_1_email"
                 android:layout_column="1"
                 android:padding="3dip"
                 android:text="0000000000" />
@@ -80,6 +83,7 @@
         <TableRow>
 
             <TextView
+                android:id="@+id/teacher_2"
                 android:layout_column="1"
                 android:padding="3dip"
                 android:text="Empty" />
@@ -88,6 +92,7 @@
         <TableRow>
 
             <TextView
+                android:id="@+id/teacher_2_email"
                 android:layout_column="1"
                 android:padding="3dip"
                 android:text="0000000000" />
@@ -113,6 +118,7 @@
         <TableRow>
 
             <TextView
+                android:id="@+id/sponsor_name"
                 android:layout_column="1"
                 android:padding="3dip"
                 android:text="Empty" />
