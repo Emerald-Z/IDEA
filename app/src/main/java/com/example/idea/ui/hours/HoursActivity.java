@@ -44,6 +44,25 @@ Context context = this;
         MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
 
+        //login hours debug
+        Button class_hours = (Button) findViewById(R.id.button1);
+
+        class_hours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HoursActivity.this, ClassHoursFormActivity.class));
+            }
+        });
+
+        Button event_hours = (Button) findViewById(R.id.button2);
+
+        event_hours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HoursActivity.this, EventHoursFormActivity.class));
+            }
+        });
+
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
