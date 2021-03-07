@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +33,12 @@ public class HoursBottomSheetFragment extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(getActivity(), R.string.text_teaching, Toast.LENGTH_SHORT).show();
-                //dismiss();
-                startActivity(new Intent(getActivity(), ClassHoursFormActivity.class));
+                class_button.setText("hello");
+                Log.d("hello", "before");
+                startActivity(new Intent(new HoursActivity(), ClassHoursFormActivity.class));
+                Log.d("hello", "after");
+                dismiss();
+
             }
         });
 
@@ -42,9 +46,8 @@ public class HoursBottomSheetFragment extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(getActivity(), R.string.text_events_including_donations_and_drives, Toast.LENGTH_SHORT).show();
-                //dismiss();
-                startActivity(new Intent(getActivity(), EventHoursFormActivity.class));
+                startActivity(new Intent(new HoursActivity(), EventHoursFormActivity.class));
+                dismiss();
             }
         });
 
