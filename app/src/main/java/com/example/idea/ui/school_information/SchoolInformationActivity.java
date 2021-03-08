@@ -42,7 +42,6 @@ public class SchoolInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_information);
 
-        System.out.println("test");
         //database fill in
 
         sharedpreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
