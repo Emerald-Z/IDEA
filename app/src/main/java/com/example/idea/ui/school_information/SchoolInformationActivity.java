@@ -47,7 +47,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String schoolid = sharedpreferences.getString("schoolInfoIdKey", null);
 
-        String URL = "http://" + IPAddress + "/test.php?action=show_user_by_school";
+        String URL = "http://www.ideaportal.org/test.php?action=show_user_by_school";
                 StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {

@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IDEA"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.hours.EventHoursFormActivity"></activity>
+        <activity android:name=".ui.login.UpdateAccountActivity"></activity>
+        <activity android:name=".ui.hours.EventHoursFormActivity" />
         <activity android:name=".ui.hours.ClassHoursFormActivity" />
-        <activity android:name=".EditAccountLogoutActivity" />
+        <activity android:name=".ui.login.EditAccountLogoutActivity" />
         <activity android:name=".ui.login.RegisterActivity" />
         <activity android:name=".ui.calendar.CalendarActivity" />
         <activity android:name=".ui.school_information.SchoolInformationActivity" />

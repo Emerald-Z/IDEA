@@ -101,39 +101,33 @@
     </TableLayout>
 
     <Button
-        android:id="@+id/open_bottom_sheet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login_hours_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Class Hours" />
+        android:layout_marginStart="16dp"
+        android:text="Class Hours"
+        app:layout_constraintBottom_toTopOf="@+id/hours_listview"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:text="Event Hours"
-        app:layout_constraintStart_toEndOf="@+id/button1"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toTopOf="@+id/hours_listview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button1" />
 
     <ListView
         android:id="@+id/hours_listview"
-        android:layout_width="420dp"
-        android:layout_height="313dp"
+        android:layout_width="417dp"
+        android:layout_height="436dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/open_bottom_sheet"
-        android:listSelector="@android:color/transparent"
-        android:cacheColorHint="@android:color/transparent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

@@ -1,4 +1,4 @@
-package com.example.idea;
+package com.example.idea.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.idea.ui.login.LoginActivity;
+import com.example.idea.R;
 
 public class EditAccountLogoutActivity extends AppCompatActivity {
     SharedPreferences preferences;
@@ -27,6 +27,14 @@ public class EditAccountLogoutActivity extends AppCompatActivity {
                 editor.clear();
                 editor.commit();
                 startActivity(new Intent(EditAccountLogoutActivity.this, LoginActivity.class));
+            }
+        });
+
+        Button update_account = (Button) findViewById(R.id.update_account);
+        update_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EditAccountLogoutActivity.this, UpdateAccountActivity.class));
             }
         });
 

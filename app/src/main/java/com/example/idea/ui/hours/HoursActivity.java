@@ -54,7 +54,7 @@ private String IPAddress = "192.168.254.24";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hours);
-//ModalBottomSheet Configuration
+/*
         Button OpenBottomSheet = findViewById(R.id.open_bottom_sheet);
         OpenBottomSheet.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -65,6 +65,8 @@ private String IPAddress = "192.168.254.24";
                         bottomSheet.show();
                     }
         });
+
+ */
 //BottomNavigationView
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // BottomNavigationViewHelper.disableShiftMode(navView);
@@ -78,7 +80,7 @@ private String IPAddress = "192.168.254.24";
         sharedpreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String userid = sharedpreferences.getString("idKey", null);
 
-        String URL = "http://" + IPAddress + "/test.php?action=show_hours_by_user";
+        String URL = "http://www.ideaportal.org/test.php?action=show_hours_by_user";
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {

@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText usernameEditText = findViewById(R.id.username);
                 EditText passwordEditText = findViewById(R.id.password);
-                String URL = "http://" + IPAddress + "/test.php?action=login";
+                String URL = "http:/" + IPAddress + "/test.php?action=login";
 
                 StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override

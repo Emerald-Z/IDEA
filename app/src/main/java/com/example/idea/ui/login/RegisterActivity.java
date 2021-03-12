@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity{
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String URL = "http://" + IPAddress + "/test.php?action=register";
+                String URL = "http://www.ideaportal.org/test.php?action=register";
                 StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
