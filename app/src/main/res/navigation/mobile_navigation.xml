@@ -7,22 +7,22 @@
 
     <activity
         android:id="@+id/contactFormActivity"
-        android:name="com.example.idea.ui.contact_us.ContactFormActivity"
+        android:name="com.ezhang.idea.ui.contact_us.ContactFormActivity"
         android:label="activity_contact_form"
         tools:layout="@layout/activity_contact_form" />
     <activity
         android:id="@+id/hoursActivity"
-        android:name="com.example.idea.ui.hours.HoursActivity"
+        android:name="com.ezhang.idea.ui.hours.HoursActivity"
         android:label="activity_hours"
         tools:layout="@layout/activity_hours" />
     <activity
         android:id="@+id/calendarActivity"
-        android:name="com.example.idea.ui.calendar.CalendarActivity"
+        android:name="com.ezhang.idea.ui.calendar.CalendarActivity"
         android:label="activity_calendar"
         tools:layout="@layout/activity_calendar" />
     <activity
         android:id="@+id/schoolInformationActivity"
-        android:name="com.example.idea.ui.school_information.SchoolInformationActivity"
+        android:name="com.ezhang.idea.ui.school_information.SchoolInformationActivity"
         android:label="activity_school_information"
         tools:layout="@layout/activity_school_information" />
 </navigation>
