@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.idea.MyAppCompactActivity;
 import com.example.idea.R;
 import com.example.idea.ui.login.LoginActivity;
 import com.example.idea.ui.login.RegisterActivity;
@@ -27,9 +28,7 @@ import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ClassHoursFormActivity extends AppCompatActivity {
-
-    private String IPAddress = "192.168.254.24";
+public class ClassHoursFormActivity extends MyAppCompactActivity {
     SharedPreferences sharedpreferences;
 
     @Override
@@ -48,7 +47,7 @@ public class ClassHoursFormActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String URL = "http://www.ideaportal.org/test.php?action=login_hours";
+                String URL = "http://" + IPAddress + "/test.php?action=login_hours";
                 StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {

@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.idea.MainActivity;
+import com.example.idea.MyAppCompactActivity;
 import com.example.idea.R;
 import com.example.idea.ui.calendar.CalendarActivity;
 import com.example.idea.ui.contact_us.ContactFormActivity;
@@ -32,10 +33,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SchoolInformationActivity extends AppCompatActivity {
+public class SchoolInformationActivity extends MyAppCompactActivity {
     SharedPreferences sharedpreferences;
-
-    private String IPAddress = "192.168.254.24";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String schoolid = sharedpreferences.getString("schoolInfoIdKey", null);
 
-        String URL = "http://www.ideaportal.org/test.php?action=show_user_by_school";
+        String URL = "http://" + IPAddress + "/test.php?action=show_user_by_school";
                 StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {

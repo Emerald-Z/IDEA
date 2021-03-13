@@ -19,19 +19,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.idea.MainActivity;
+import com.example.idea.MyAppCompactActivity;
 import com.example.idea.R;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity extends AppCompatActivity{
+public class RegisterActivity extends MyAppCompactActivity {
 
         private EditText emailText;
         private Button addBtn;
         private EditText passwdText;
         private EditText firstNameText;
         private EditText lastNameText;
-        private String IPAddress = "192.168.254.24";
 
         Context c = this;
 
@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity{
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String URL = "http://www.ideaportal.org/test.php?action=register";
+                String URL = "http://" + IPAddress + "/test.php?action=register";
                 StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {

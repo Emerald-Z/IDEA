@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.idea.MainActivity;
+import com.example.idea.MyAppCompactActivity;
 import com.example.idea.R;
 
 import org.json.JSONException;
@@ -33,7 +34,7 @@ import java.util.Map;
 import okhttp3.MediaType;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends MyAppCompactActivity {
     Context c = this;
 
     private static final String TAG = "MyActivity";
@@ -56,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String SCHOOL_SPONSOR = "sponsorKey";
 
     SharedPreferences sharedpreferences;
-    private String IPAddress = "192.168.254.24";
+
 
 
     @Override
@@ -84,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText usernameEditText = findViewById(R.id.username);
                 EditText passwordEditText = findViewById(R.id.password);
-                String URL = "http:/" + IPAddress + "/test.php?action=login";
+                String URL = "http://" + IPAddress + "/test.php?action=login";
 
                 StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override

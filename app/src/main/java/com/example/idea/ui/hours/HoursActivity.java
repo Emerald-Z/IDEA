@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.idea.MyAppCompactActivity;
 import com.example.idea.ui.contact_us.ContactFormActivity;
 import com.example.idea.MainActivity;
 import com.example.idea.R;
@@ -45,10 +46,9 @@ import java.util.Map;
 
 import static java.lang.Integer.parseInt;
 
-public class HoursActivity extends AppCompatActivity {
+public class HoursActivity extends MyAppCompactActivity {
 Context context = this;
 SharedPreferences sharedpreferences;
-private String IPAddress = "192.168.254.24";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +80,7 @@ private String IPAddress = "192.168.254.24";
         sharedpreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String userid = sharedpreferences.getString("idKey", null);
 
-        String URL = "http://www.ideaportal.org/test.php?action=show_hours_by_user";
+        String URL = "http://" + IPAddress + "/test.php?action=show_hours_by_user";
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {

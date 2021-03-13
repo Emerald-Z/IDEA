@@ -18,18 +18,18 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.idea.MainActivity;
+import com.example.idea.MyAppCompactActivity;
 import com.example.idea.R;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class UpdateAccountActivity extends AppCompatActivity {
+public class UpdateAccountActivity extends MyAppCompactActivity {
     private EditText emailText;
     private Button addBtn;
     private EditText passwdText;
     private EditText firstNameText;
     private EditText lastNameText;
-    private String IPAddress = "192.168.254.24";
     SharedPreferences sharedpreferences;
 
     @Override
