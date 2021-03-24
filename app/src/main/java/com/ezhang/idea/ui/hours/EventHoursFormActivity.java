@@ -73,7 +73,7 @@ public class EventHoursFormActivity extends AppCompatActivity {
                 submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String URL = "http://www.ideaportal.org?action=login_hours";
+                        String URL = "http://" + IPAddress + "/test.php?action=login_hours";
                         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String s) {
