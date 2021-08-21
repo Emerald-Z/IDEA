@@ -101,7 +101,7 @@ SharedPreferences sharedpreferences;
                             String user_hours = hour_submitted.getString("hour");
                             String type = hour_submitted.getString("type");
                             String description = hour_submitted.getString("description");
-                            String final_string = date + "- " + user_hours + "- " + type + ", " + description;
+                            String final_string = date + " --- " + user_hours + " --- " + type + " --- " + description;
                             hours_list.add(final_string);
 
                             if(type.equals("Event Hours")){
