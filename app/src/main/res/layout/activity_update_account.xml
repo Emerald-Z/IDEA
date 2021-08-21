@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.login.UpdateAccountActivity">
 
+
     <EditText
         android:id="@+id/change_firstname"
         android:layout_width="match_parent"
@@ -17,23 +18,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></EditText>
-
+        app:layout_constraintTop_toBottomOf="@+id/textView2"></EditText>
 
     <EditText
         android:id="@+id/change_lastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginBottom="344dp"
         android:ems="10"
         android:hint="last name"
-        app:layout_constraintBottom_toTopOf="@+id/change_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/change_firstname"
-        app:layout_constraintVertical_bias="0.111"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/change_firstname"></EditText>
 
     <EditText
         android:id="@+id/change_email"
@@ -41,9 +37,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/contact_form_email"
-        app:layout_constraintBottom_toTopOf="@id/change_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/change_lastname"></EditText>
 
@@ -69,5 +64,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="426dp"
+        android:layout_height="251dp"
+        app:srcCompat="@drawable/account"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-14dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Account"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="206dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

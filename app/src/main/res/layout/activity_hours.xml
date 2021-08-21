@@ -6,17 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.hours.HoursActivity">
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="486dp"
+        android:layout_height="329dp"
+        app:srcCompat="@drawable/hours_time"
+        tools:layout_editor_absoluteX="-34dp"
+        tools:layout_editor_absoluteY="-74dp" />
+
     <TextView
         android:id="@+id/text_hours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="8dp"
         android:text="@string/title_hours"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -79,6 +87,7 @@
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="@string/zero_number" />
+
         </TableRow>
 
         <View
@@ -116,18 +125,17 @@
         android:layout_marginEnd="16dp"
         android:text="Event Hours"
         app:layout_constraintBottom_toTopOf="@+id/hours_listview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button1" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ListView
         android:id="@+id/hours_listview"
-        android:layout_width="417dp"
-        android:layout_height="436dp"
+        android:layout_width="426dp"
+        android:layout_height="203dp"
         android:cacheColorHint="@android:color/transparent"
         android:listSelector="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="424dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

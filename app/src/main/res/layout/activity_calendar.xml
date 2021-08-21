@@ -42,8 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <TableRow>
 
@@ -147,4 +146,24 @@
                 android:text="Type" />
         </TableRow>
     </TableLayout>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="411dp"
+        android:layout_height="233dp"
+        app:srcCompat="@drawable/account"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calendar Schedule"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="212dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
